@@ -5,126 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SpaceLogic - Coming Soon</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Styles -->
     <style>
         body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            font-family: 'Space Grotesk', sans-serif;
-            color: #fff;
+            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
             position: relative;
+            overflow-x: hidden;
         }
 
-        .stars {
+        .grid-pattern {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            background: #fff;
-            border-radius: 50%;
-            animation: twinkle 1s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            background-image: 
+                linear-gradient(to right, rgba(0, 123, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 123, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.8;
+            z-index: 0;
         }
 
         .container {
-            text-align: center;
+            text-align: left;
             z-index: 1;
-            padding: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .content {
+            max-width: 600px;
+        }
+
+        .logo-container {
+            display: inline-block;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
         }
 
         .logo {
             font-size: 4rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #00ff88, #00a1ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 1.5rem;
+            color: #000000;
+            position: relative;
+            display: inline-block;
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px rgba(0, 255, 136, 0.2),
-                           0 0 20px rgba(0, 161, 255, 0.2);
-            }
-            to {
-                text-shadow: 0 0 20px rgba(0, 255, 136, 0.4),
-                           0 0 30px rgba(0, 161, 255, 0.4);
-            }
+        .logo span {
+            font-weight: 700;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .logo-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 8px 8px;
+            border-radius: 1rem;
+            pointer-events: none;
         }
 
         .coming-soon {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin: 2rem 0;
-            opacity: 1;
-            animation: fadeIn 1s ease-out;
+            color: #007bff;
+            font-weight: 500;
         }
 
         .description {
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.25rem;
             line-height: 1.6;
-            opacity: 1;
-            animation: fadeIn 1s ease-out 0.3s;
+            color: #444;
+            margin-bottom: 2rem;
         }
 
         .subscription-form {
             margin-top: 2rem;
-            opacity: 1;
-            animation: fadeIn 1s ease-out 0.6s;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .subscription-form input[type="email"] {
             padding: 1rem 1.5rem;
-            width: 300px;
-            max-width: 80%;
-            border: none;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-family: 'Space Grotesk', sans-serif;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            background: #fff;
+            color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
             transition: all 0.3s ease;
-            margin-right: 10px;
         }
 
         .subscription-form input[type="email"]:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
         }
 
         .subscription-form button {
             padding: 1rem 2rem;
             border: none;
-            border-radius: 25px;
-            background: linear-gradient(45deg, #00ff88, #00a1ff);
+            border-radius: 4px;
+            background: #007bff;
             color: white;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .subscription-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+            background: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
         }
 
         .message {
@@ -135,99 +181,129 @@
         }
 
         .message.success {
-            color: #00ff88;
+            color: #28a745;
             opacity: 1;
         }
 
         .message.error {
-            color: #ff4444;
+            color: #dc3545;
             opacity: 1;
         }
 
-        @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px); 
+        .visual-element {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .geometric-shapes {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(0, 123, 255, 0.05);
+            border: 1px solid rgba(0, 123, 255, 0.2);
+        }
+
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            top: 0;
+            right: 0;
+            transform: rotate(45deg);
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            bottom: 50px;
+            left: 50px;
+            transform: rotate(30deg);
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            right: 100px;
+            transform: rotate(15deg);
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem 1rem;
             }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
+
+            .content {
+                margin: 0 auto;
+            }
+
+            .logo::after {
+                left: 0;
+                transform: none;
+                width: 100%;
+            }
+
+            .form-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .subscription-form input[type="email"] {
+                max-width: 100%;
+            }
+
+            .visual-element {
+                display: none;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 480px) {
             .logo {
-                font-size: 3rem;
-            }
-            .coming-soon {
-                font-size: 1.5rem;
+                font-size: 2.5rem;
             }
             .description {
-                font-size: 0.9rem;
-                padding: 0 1rem;
-            }
-            .subscription-form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-            .subscription-form input[type="email"] {
-                margin-right: 0;
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <div class="grid-pattern"></div>
     <div class="container">
-        <h1 class="logo">SpaceLogic</h1>
-        <div class="coming-soon">Lancement bientôt!</div>
-        <p class="description text-balance">
-             Accélérez vos projets d'architecture avec notre plateforme web conçue pour simplifier le développement de projets avec vos clients.
-        </p>
-        <form class="subscription-form" id="subscriptionForm">
-            <input type="email" name="email" placeholder="Entrez votre email" required>
-            <button type="submit">Notifiez-moi</button>
-            <div class="message" id="message"></div>
-        </form>
+        <div class="content">
+            <h1 class="logo">SpaceLogic</h1>
+            <div class="coming-soon">Lancement bientôt!</div>
+            <p class="description">
+                Accélérez vos projets d'architecture avec notre plateforme web conçue pour simplifier le développement de projets avec vos clients.
+            </p>
+            <form class="subscription-form" id="subscriptionForm">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Entrez votre email" required>
+                    <button type="submit">Notifiez-moi</button>
+                </div>
+                <div class="message" id="message"></div>
+            </form>
+        </div>
+        <div class="visual-element">
+            <div class="geometric-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Create animated stars background
-        function createStars() {
-            const stars = document.getElementById('stars');
-            const numberOfStars = 100;
-
-            for (let i = 0; i < numberOfStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Random position
-                const x = Math.random() * 100;
-                const y = Math.random() * 100;
-                
-                // Random size
-                const size = Math.random() * 3;
-                
-                // Random animation delay
-                const delay = Math.random() * 1;
-                
-                star.style.left = `${x}%`;
-                star.style.top = `${y}%`;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.animationDelay = `${delay}s`;
-                
-                stars.appendChild(star);
-            }
-        }
-
-        // Initialize stars on page load
+        // Handle form submission
         document.addEventListener('DOMContentLoaded', () => {
-            createStars();
-
-            // Handle form submission
             const form = document.getElementById('subscriptionForm');
             const messageDiv = document.getElementById('message');
 
