@@ -328,7 +328,7 @@
                         messageDiv.className = 'message success';
                         form.reset();
                     } else {
-                        throw new Error(data.message || 'Something went wrong');
+                        throw new Error(data.message || 'Quelque chose s’est mal passé');
                     }
                 } catch (error) {
                     messageDiv.textContent = error.message;

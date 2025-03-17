@@ -18,7 +18,7 @@ class SubscriberController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Thank you for subscribing!'
+            'message' => 'Merci de vous être abonné(e)!'
         ]);
     }
 }
