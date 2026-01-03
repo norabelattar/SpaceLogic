@@ -5,330 +5,248 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SpaceLogic - Coming Soon</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Styles -->
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background: #ffffff;
-            font-family: 'Inter', sans-serif;
-            color: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        .grid-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(to right, rgba(0, 123, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 123, 255, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.8;
-            z-index: 0;
-        }
-
-        .container {
-            text-align: left;
-            z-index: 1;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .content {
-            max-width: 600px;
-        }
-
-        .logo-container {
-            display: inline-block;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .logo {
-            font-size: 4rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #000000;
-            position: relative;
-            display: inline-block;
-        }
-
-        .logo span {
-            font-weight: 700;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: #007bff;
-            transition: width 0.3s ease;
-        }
-
-        .logo:hover::after {
-            width: 100%;
-        }
-
-        .logo-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-            background-size: 8px 8px;
-            border-radius: 1rem;
-            pointer-events: none;
-        }
-
-        .coming-soon {
-            font-size: 1.5rem;
-            margin: 2rem 0;
-            color: #007bff;
-            font-weight: 500;
-        }
-
-        .description {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: #444;
-            margin-bottom: 2rem;
-        }
-
-        .subscription-form {
-            margin-top: 2rem;
-        }
-
-        .form-group {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .subscription-form input[type="email"] {
-            padding: 1rem 1.5rem;
-            width: 100%;
-            max-width: 400px;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            background: #fff;
-            color: #1a1a1a;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .subscription-form input[type="email"]:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
-        }
-
-        .subscription-form button {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 4px;
-            background: #007bff;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .subscription-form button:hover {
-            background: #0056b3;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
-        }
-
-        .message {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .message.success {
-            color: #28a745;
-            opacity: 1;
-        }
-
-        .message.error {
-            color: #dc3545;
-            opacity: 1;
-        }
-
-        .visual-element {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .geometric-shapes {
-            position: relative;
-            width: 100%;
-            height: 400px;
-        }
-
-        .shape {
-            position: absolute;
-            background: rgba(0, 123, 255, 0.05);
-            border: 1px solid rgba(0, 123, 255, 0.2);
-        }
-
-        .shape-1 {
-            width: 200px;
-            height: 200px;
-            top: 0;
-            right: 0;
-            transform: rotate(45deg);
-        }
-
-        .shape-2 {
-            width: 150px;
-            height: 150px;
-            bottom: 50px;
-            left: 50px;
-            transform: rotate(30deg);
-        }
-
-        .shape-3 {
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            right: 100px;
-            transform: rotate(15deg);
-        }
-
-        @media (max-width: 968px) {
-            .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 2rem 1rem;
-            }
-
-            .content {
-                margin: 0 auto;
-            }
-
-            .logo::after {
-                left: 0;
-                transform: none;
-                width: 100%;
-            }
-
-            .form-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .subscription-form input[type="email"] {
-                max-width: 100%;
-            }
-
-            .visual-element {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 2.5rem;
-            }
-            .description {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    @vite(['resources/css/welcome.css', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="grid-pattern"></div>
-    <div class="container">
-        <div class="content">
-            <h1 class="logo">SpaceLogic</h1>
-            <div class="coming-soon">Lancement bientôt!</div>
-            <p class="description">
-                Accélérez vos projets d'architecture avec notre plateforme web conçue pour simplifier le développement de projets avec vos clients.
-            </p>
-            <form class="subscription-form" id="subscriptionForm">
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Entrez votre email" required>
-                    <button type="submit">Notifiez-moi</button>
-                </div>
-                <div class="message" id="message"></div>
-            </form>
-        </div>
-        <div class="visual-element">
-            <div class="geometric-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
+    <div class="page">
+        <header class="topbar">
+            <a class="brand" href="#">
+                <svg width="403" height="70" viewBox="0 0 403 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g clip-path="url(#clip0_2_371)">
+                        <path d="M100.891 46C100.891 47.447 100.591 48.7617 99.9914 49.9441C99.3914 51.1088 98.5885 52.1147 97.5826 52.9618C96.5767 53.8088 95.4208 54.4618 94.1149 54.9206C92.809 55.3794 91.4502 55.6088 90.0384 55.6088C88.0972 55.6088 86.3149 55.2471 84.6913 54.5235C83.0678 53.8 81.7796 52.7323 80.8266 51.3206V55H77.756V44.4911H80.8266C80.8266 45.6735 81.1001 46.7588 81.6472 47.747C82.1943 48.7176 82.8913 49.5559 83.7384 50.2617C84.5855 50.9676 85.556 51.5235 86.6502 51.9294C87.7619 52.3176 88.8914 52.5118 90.0384 52.5118C91.062 52.5118 92.0061 52.3706 92.8708 52.0882C93.7355 51.7882 94.4943 51.3735 95.1473 50.8441C95.8002 50.297 96.312 49.6353 96.6826 48.8588C97.0708 48.0823 97.2649 47.2 97.2649 46.2117C97.2649 45.1 97.0179 44.147 96.5237 43.3529C96.0473 42.5588 95.3943 41.8794 94.5649 41.3146C93.7531 40.7499 92.8355 40.2735 91.812 39.8852C90.7884 39.4793 89.7472 39.0823 88.6884 38.694C87.4355 38.2529 86.1825 37.794 84.9296 37.3176C83.6766 36.8234 82.556 36.2058 81.5678 35.4646C80.5796 34.7234 79.7766 33.8234 79.159 32.7646C78.5413 31.6881 78.2325 30.3558 78.2325 28.7675C78.2325 27.3558 78.5325 26.1028 79.1325 25.0087C79.7325 23.8969 80.5178 22.9616 81.4884 22.2028C82.459 21.444 83.5884 20.8704 84.8766 20.4822C86.1649 20.0763 87.4884 19.8734 88.8472 19.8734C90.5237 19.8734 92.0678 20.2175 93.4796 20.9057C94.909 21.594 96.0208 22.644 96.8149 24.0557V20.4557H100.018V30.3293H96.8149C96.8149 29.2881 96.5943 28.3175 96.1532 27.4175C95.7296 26.4999 95.1473 25.7234 94.4061 25.0881C93.6649 24.4352 92.8178 23.9234 91.8649 23.5528C90.912 23.1646 89.9061 22.9704 88.8472 22.9704C87.9119 22.9704 87.0208 23.0763 86.1737 23.2881C85.3266 23.4999 84.5855 23.844 83.9502 24.3205C83.3149 24.7793 82.8031 25.3793 82.4149 26.1205C82.0443 26.8616 81.859 27.744 81.859 28.7675C81.859 29.6675 82.0796 30.4352 82.5207 31.0705C82.9796 31.7058 83.5884 32.2705 84.3472 32.7646C85.106 33.2411 85.9796 33.6823 86.9678 34.0881C87.9737 34.4764 88.9972 34.8734 90.0384 35.2793C91.3443 35.7382 92.6414 36.2499 93.9296 36.8146C95.2179 37.3793 96.3737 38.0587 97.3973 38.8529C98.4208 39.647 99.2591 40.6264 99.912 41.7911C100.565 42.9382 100.891 44.3411 100.891 46ZM131.359 42.6911C131.359 44.6147 131.059 46.3617 130.459 47.9323C129.859 49.5029 129.012 50.8617 127.918 52.0088C126.842 53.1382 125.536 54.0206 124 54.6559C122.465 55.2912 120.744 55.6088 118.839 55.6088C117.533 55.6088 116.262 55.3706 115.027 54.8941C113.809 54.4176 112.671 53.7118 111.612 52.7765V64.8736H107.986V30.3293H111.612V32.6058C113.853 30.6999 116.262 29.7469 118.839 29.7469C120.744 29.7469 122.465 30.0646 124 30.6999C125.536 31.3175 126.842 32.2087 127.918 33.3734C129.012 34.5205 129.859 35.897 130.459 37.5029C131.059 39.0911 131.359 40.8205 131.359 42.6911ZM127.733 42.6911C127.733 41.3146 127.539 40.0264 127.15 38.8264C126.78 37.6087 126.215 36.5587 125.456 35.6764C124.697 34.794 123.762 34.097 122.65 33.5852C121.556 33.0734 120.286 32.8176 118.839 32.8176C117.462 32.8176 116.174 33.0734 114.974 33.5852C113.791 34.097 112.671 34.9264 111.612 36.0734V49.3088C112.671 50.4559 113.791 51.2765 114.974 51.7706C116.174 52.2647 117.462 52.5118 118.839 52.5118C120.286 52.5118 121.556 52.2559 122.65 51.7441C123.762 51.2323 124.697 50.5353 125.456 49.6529C126.215 48.7706 126.78 47.7382 127.15 46.5558C127.539 45.3558 127.733 44.0676 127.733 42.6911ZM136.23 48.3294C136.23 46.7764 136.618 45.4794 137.395 44.4382C138.171 43.3794 139.186 42.5499 140.439 41.9499C141.709 41.3323 143.156 40.8911 144.78 40.6264C146.421 40.3441 148.089 40.2029 149.783 40.2029C150.436 40.2029 151.018 40.2117 151.53 40.2293C152.059 40.247 152.553 40.2735 153.012 40.3088C153.489 40.3441 153.965 40.3882 154.442 40.4411C154.918 40.4941 155.439 40.5558 156.003 40.6264V38.8529C156.003 37.6529 155.739 36.6646 155.209 35.8882C154.698 35.1117 154.062 34.5029 153.303 34.0617C152.545 33.6028 151.75 33.2852 150.921 33.1087C150.092 32.9146 149.386 32.8176 148.803 32.8176C146.968 32.8176 145.274 33.0646 143.721 33.5587C142.168 34.0528 140.721 34.7146 139.38 35.544L137.739 32.8176C139.221 31.9175 140.88 31.1852 142.715 30.6205C144.568 30.0381 146.597 29.7469 148.803 29.7469C150.145 29.7469 151.459 29.9234 152.748 30.2764C154.053 30.6117 155.218 31.1411 156.242 31.8646C157.283 32.5705 158.112 33.5058 158.73 34.6705C159.348 35.8352 159.656 37.2293 159.656 38.8529V55H156.003V50.8706C155.368 51.6647 154.645 52.3618 153.833 52.9618C153.039 53.5618 152.2 54.0559 151.318 54.4441C150.436 54.8147 149.553 55.0971 148.671 55.2912C147.789 55.5029 146.95 55.6088 146.156 55.6088C142.892 55.6088 140.421 54.9824 138.745 53.7294C137.068 52.4765 136.23 50.6765 136.23 48.3294ZM146.156 52.5118C147.674 52.5118 149.033 52.2912 150.233 51.85C151.45 51.3912 152.483 50.8265 153.33 50.1559C154.177 49.4853 154.83 48.7706 155.289 48.0117C155.765 47.2529 156.003 46.5647 156.003 45.947V43.6176C154.821 43.4411 153.683 43.3441 152.589 43.3264C151.512 43.3088 150.577 43.2999 149.783 43.2999C148.477 43.2999 147.215 43.3882 145.997 43.5647C144.797 43.7411 143.747 44.0323 142.847 44.4382C141.947 44.8264 141.224 45.3382 140.677 45.9735C140.13 46.6088 139.856 47.3941 139.856 48.3294C139.856 49.3706 140.359 50.3323 141.365 51.2147C142.389 52.0794 143.986 52.5118 146.156 52.5118ZM189.621 50.2882C188.58 51.9118 187.151 53.2088 185.333 54.1794C183.533 55.1324 181.389 55.6088 178.901 55.6088C176.977 55.6088 175.212 55.2912 173.606 54.6559C172.001 54.0206 170.624 53.1382 169.477 52.0088C168.348 50.8617 167.465 49.5029 166.83 47.9323C166.195 46.3617 165.877 44.6147 165.877 42.6911C165.877 40.8205 166.168 39.0911 166.751 37.5029C167.333 35.897 168.162 34.5293 169.239 33.3999C170.315 32.2528 171.63 31.3617 173.183 30.7264C174.754 30.0734 176.492 29.7469 178.398 29.7469C179.156 29.7469 179.933 29.8352 180.727 30.0117C181.521 30.1881 182.271 30.4617 182.977 30.8322C183.683 31.1852 184.318 31.6175 184.883 32.1293C185.448 32.6234 185.871 33.2146 186.154 33.9028V30.3293H189.409V40.2029H186.154C186.154 39.1088 185.951 38.1117 185.545 37.2117C185.156 36.3117 184.618 35.5352 183.93 34.8823C183.242 34.2293 182.421 33.7264 181.468 33.3734C180.515 33.0028 179.492 32.8176 178.398 32.8176C176.915 32.8176 175.618 33.0734 174.506 33.5852C173.412 34.097 172.495 34.794 171.753 35.6764C171.012 36.5587 170.448 37.5999 170.059 38.7999C169.689 39.9823 169.503 41.2794 169.503 42.6911C169.503 44.1029 169.715 45.4088 170.139 46.6088C170.58 47.7911 171.206 48.8147 172.018 49.6794C172.848 50.5441 173.836 51.2323 174.983 51.7441C176.148 52.2559 177.454 52.5118 178.901 52.5118C180.736 52.5118 182.368 52.15 183.798 51.4265C185.227 50.7029 186.321 49.7412 187.08 48.5411L189.621 50.2882ZM199.098 43.9352C199.362 46.547 200.315 48.6294 201.957 50.1823C203.598 51.7353 205.733 52.5118 208.362 52.5118C210.215 52.5118 211.865 52.1323 213.312 51.3735C214.76 50.6147 215.845 49.6706 216.568 48.5411L219.11 50.2882C217.874 52.0176 216.401 53.3412 214.689 54.2588C212.977 55.1588 210.868 55.6088 208.362 55.6088C206.457 55.6088 204.71 55.2912 203.121 54.6559C201.533 54.0206 200.157 53.1382 198.992 52.0088C197.845 50.8617 196.954 49.5029 196.318 47.9323C195.683 46.3617 195.365 44.6147 195.365 42.6911C195.365 40.8205 195.648 39.0999 196.212 37.5293C196.795 35.9411 197.624 34.5734 198.701 33.4264C199.795 32.2617 201.118 31.3617 202.671 30.7264C204.224 30.0734 205.962 29.7469 207.886 29.7469C209.986 29.7469 211.821 30.0999 213.392 30.8058C214.962 31.5117 216.268 32.4911 217.31 33.744C218.368 34.9793 219.145 36.4617 219.639 38.1911C220.151 39.9205 220.407 41.8352 220.407 43.9352H199.098ZM216.568 40.8382C216.163 38.1382 215.183 36.1264 213.63 34.8029C212.077 33.4793 210.162 32.8176 207.886 32.8176C206.721 32.8176 205.645 33.0117 204.657 33.3999C203.668 33.7705 202.795 34.3087 202.036 35.0146C201.277 35.7205 200.642 36.5764 200.13 37.5823C199.618 38.5705 199.292 39.6558 199.151 40.8382H216.568ZM248.439 55H226.363V20.4557H229.989V51.9029H248.439V55ZM279.966 42.7441C279.966 44.6676 279.657 46.4147 279.039 47.9853C278.439 49.5559 277.566 50.9059 276.419 52.0353C275.289 53.1471 273.93 54.0206 272.342 54.6559C270.754 55.2912 268.98 55.6088 267.022 55.6088C265.098 55.6088 263.342 55.2912 261.754 54.6559C260.166 54.0206 258.798 53.1471 257.651 52.0353C256.522 50.9059 255.648 49.5559 255.03 47.9853C254.43 46.4147 254.13 44.6676 254.13 42.7441C254.13 40.8735 254.43 39.1352 255.03 37.5293C255.648 35.9058 256.522 34.5293 257.651 33.3999C258.798 32.2528 260.166 31.3617 261.754 30.7264C263.342 30.0734 265.098 29.7469 267.022 29.7469C268.98 29.7469 270.754 30.0734 272.342 30.7264C273.93 31.3617 275.289 32.2528 276.419 33.3999C277.566 34.5293 278.439 35.9058 279.039 37.5293C279.657 39.1352 279.966 40.8735 279.966 42.7441ZM276.339 42.7441C276.339 41.3323 276.127 40.0352 275.704 38.8529C275.298 37.6529 274.689 36.6029 273.877 35.7029C273.066 34.8029 272.077 34.097 270.913 33.5852C269.766 33.0734 268.469 32.8176 267.022 32.8176C265.574 32.8176 264.269 33.0734 263.104 33.5852C261.957 34.097 260.986 34.8029 260.192 35.7029C259.398 36.6029 258.789 37.6529 258.366 38.8529C257.96 40.0352 257.757 41.3323 257.757 42.7441C257.757 44.1558 257.96 45.4617 258.366 46.6617C258.789 47.8441 259.398 48.8676 260.192 49.7323C260.986 50.597 261.957 51.2765 263.104 51.7706C264.269 52.2647 265.574 52.5118 267.022 52.5118C268.469 52.5118 269.766 52.2647 270.913 51.7706C272.077 51.2765 273.066 50.597 273.877 49.7323C274.689 48.8676 275.298 47.8441 275.704 46.6617C276.127 45.4617 276.339 44.1558 276.339 42.7441ZM307.628 54.7353C307.628 56.4294 307.336 57.9382 306.754 59.2618C306.172 60.5853 305.351 61.7059 304.292 62.6236C303.251 63.5412 302.016 64.2383 300.586 64.7147C299.175 65.2089 297.595 65.4559 295.848 65.4559C293.395 65.4559 291.304 64.9971 289.575 64.0795C287.863 63.1618 286.38 61.8383 285.128 60.1088L287.669 58.15C288.428 59.2971 289.522 60.2588 290.951 61.0353C292.38 61.8118 294.013 62.2 295.848 62.2C298.354 62.2 300.331 61.5647 301.778 60.2941C303.242 59.0412 303.975 57.2235 303.975 54.8412V52.1941C301.822 54.1 299.369 55.0529 296.616 55.0529C292.751 55.0529 289.716 53.95 287.51 51.7441C285.304 49.5382 284.201 46.5206 284.201 42.6911C284.201 40.8205 284.483 39.0999 285.048 37.5293C285.63 35.9411 286.451 34.5734 287.51 33.4264C288.586 32.2617 289.892 31.3617 291.428 30.7264C292.963 30.0734 294.692 29.7469 296.616 29.7469C297.957 29.7469 299.254 29.9852 300.507 30.4617C301.778 30.9205 302.933 31.6175 303.975 32.5528V30.3293H307.628V54.7353ZM303.975 36.0734C302.933 34.9264 301.786 34.097 300.533 33.5852C299.298 33.0734 297.992 32.8176 296.616 32.8176C295.169 32.8176 293.889 33.0734 292.778 33.5852C291.683 34.097 290.775 34.794 290.051 35.6764C289.328 36.5587 288.772 37.6087 288.383 38.8264C288.013 40.0264 287.828 41.3146 287.828 42.6911C287.828 45.5147 288.56 47.7647 290.025 49.4412C291.489 51.1176 293.686 51.9559 296.616 51.9559C297.992 51.9559 299.298 51.7 300.533 51.1882C301.786 50.6588 302.933 49.8117 303.975 48.647V36.0734ZM328.645 25.4058H323.722V20.4557H328.645V25.4058ZM333.569 55H318.772V51.9029H324.357V33.4264H318.772V30.3293H328.01V51.9029H333.569V55ZM367.187 50.2882C366.146 51.9118 364.716 53.2088 362.898 54.1794C361.098 55.1324 358.954 55.6088 356.466 55.6088C354.543 55.6088 352.778 55.2912 351.172 54.6559C349.566 54.0206 348.19 53.1382 347.042 52.0088C345.913 50.8617 345.031 49.5029 344.395 47.9323C343.76 46.3617 343.442 44.6147 343.442 42.6911C343.442 40.8205 343.734 39.0911 344.316 37.5029C344.898 35.897 345.728 34.5293 346.804 33.3999C347.881 32.2528 349.195 31.3617 350.748 30.7264C352.319 30.0734 354.057 29.7469 355.963 29.7469C356.722 29.7469 357.498 29.8352 358.293 30.0117C359.087 30.1881 359.837 30.4617 360.543 30.8322C361.248 31.1852 361.884 31.6175 362.448 32.1293C363.013 32.6234 363.437 33.2146 363.719 33.9028V30.3293H366.975V40.2029H363.719C363.719 39.1088 363.516 38.1117 363.11 37.2117C362.722 36.3117 362.184 35.5352 361.495 34.8823C360.807 34.2293 359.987 33.7264 359.034 33.3734C358.081 33.0028 357.057 32.8176 355.963 32.8176C354.481 32.8176 353.184 33.0734 352.072 33.5852C350.978 34.097 350.06 34.794 349.319 35.6764C348.578 36.5587 348.013 37.5999 347.625 38.7999C347.254 39.9823 347.069 41.2794 347.069 42.6911C347.069 44.1029 347.281 45.4088 347.704 46.6088C348.145 47.7911 348.772 48.8147 349.584 49.6794C350.413 50.5441 351.401 51.2323 352.548 51.7441C353.713 52.2559 355.019 52.5118 356.466 52.5118C358.301 52.5118 359.934 52.15 361.363 51.4265C362.793 50.7029 363.887 49.7412 364.646 48.5411L367.187 50.2882ZM387.834 55H382.91V50.0764H387.834V55Z" fill="black"/>
+                        <g clip-path="url(#clip1_2_371)">
+                            <path d="M24.0001 11L47.5 24.0909L24.0001 37.1818L0.5 24.0909L24.0001 11Z" fill="#6B7280"/>
+                            <path d="M0.5 24.0909L24.0001 37.1818V59L0.5 45.9091V24.0909Z" fill="#374151"/>
+                            <path d="M47.4999 24.0909L24 37.1818V59L47.4999 45.9091V24.0909Z" fill="black"/>
+                        </g>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_2_371">
+                            <rect width="403" height="70" fill="white"/>
+                        </clipPath>
+                        <clipPath id="clip1_2_371">
+                            <rect width="47" height="48" fill="white" transform="translate(0.5 11)"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+            @php($locale = app()->getLocale())
+            <div class="top-actions">
+                <a class="lang-toggle" href="{{ route('lang.switch', ['locale' => $locale === 'fr' ? 'en' : 'fr']) }}">
+                    {{ $locale === 'fr' ? 'EN' : 'FR' }}
+                </a>
+                <a class="cta-button" href="#signup">{{ __('cta') }}</a>
             </div>
-        </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="badge">{{ __('badge') }}</div>
+                <h1>{{ __('heroTitle') }}</h1>
+                <p>{{ __('heroSubtitle') }}</p>
+
+                <div class="mockup" aria-hidden="true">
+                    <div class="mockup-header">
+                        <span class="dot" style="background:#ef4444"></span>
+                        <span class="dot" style="background:#f59e0b"></span>
+                        <span class="dot" style="background:#22c55e"></span>
+                        <span style="margin-left: 1rem; font-size: 0.75rem; color: #94a3b8;">spacelogic.app/dashboard</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-sidebar">
+                            <div class="pill" style="width: 70%"></div>
+                            <div class="pill wide"></div>
+                            <div class="pill light" style="width: 80%"></div>
+                            <div class="pill light" style="width: 65%"></div>
+                            <div class="pill light" style="width: 90%"></div>
+                            <div class="pill light" style="width: 75%"></div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-heading">
+                                <div class="mockup-title"></div>
+                                <div class="mockup-subtitle"></div>
+                            </div>
+                            <div class="mockup-row">
+                                <div class="mockup-card">
+                                    <div class="avatar"></div>
+                                    <div class="line"></div>
+                                    <div class="line short"></div>
+                                    <div class="badge"></div>
+                                </div>
+                                <div class="mockup-card">
+                                    <div class="avatar"></div>
+                                    <div class="line"></div>
+                                    <div class="line short"></div>
+                                    <div class="badge"></div>
+                                </div>
+                                <div class="mockup-card">
+                                    <div class="avatar"></div>
+                                    <div class="line"></div>
+                                    <div class="line short"></div>
+                                    <div class="badge"></div>
+                                </div>
+                            </div>
+                            <div class="mockup-rail">
+                                <div class="pill dark" style="width: 140px"></div>
+                                <div class="pill" style="width: 180px"></div>
+                            </div>
+                            <div class="mockup-rail">
+                                <div class="mockup-card-large">
+                                    <div class="line dark long"></div>
+                                    <div class="line short"></div>
+                                    <div class="mockup-pill"></div>
+                                    <div class="progress"><span></span></div>
+                                    <div class="line" style="width: 40%"></div>
+                                </div>
+                                <div class="mockup-sidepanel">
+                                    <div class="item">
+                                        <span class="dot"></span>
+                                        <div class="line dark"></div>
+                                    </div>
+                                    <div class="item">
+                                        <span class="dot"></span>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="item">
+                                        <span class="dot"></span>
+                                        <div class="line dark"></div>
+                                    </div>
+                                    <div class="item">
+                                        <span class="dot"></span>
+                                        <div class="line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mockup-card-large">
+                                <div class="line dark long"></div>
+                                <div class="line short"></div>
+                                <div class="mockup-pill"></div>
+                                <div class="progress light"><span></span></div>
+                                <div class="line" style="width: 45%"></div>
+                            </div>
+                            <div class="mockup-card-large">
+                                <div class="line dark long"></div>
+                                <div class="line short"></div>
+                                <div class="mockup-pill"></div>
+                                <div class="progress"><span></span></div>
+                                <div class="line" style="width: 38%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="features-card">
+                    <h2>{{ __('featuresTitle') }}</h2>
+                    <div class="features-list">
+                        <div class="features-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>{{ __('feature1') }}</span>
+                        </div>
+                        <div class="features-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>{{ __('feature2') }}</span>
+                        </div>
+                        <div class="features-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>{{ __('feature3') }}</span>
+                        </div>
+                        <div class="features-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>{{ __('feature4') }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="signup" id="signup">
+                <h2>{{ __('formTitle') }}</h2>
+                <p>{{ __('formSubtitle') }}</p>
+                <div class="form-card">
+                    <form class="subscription-form" id="subscriptionForm">
+                        <label for="full_name">{{ __('labelName') }}</label>
+                        <input id="full_name" name="name" type="text" placeholder="{{ __('placeholderName') }}" required>
+
+                        <label for="email">{{ __('labelEmail') }}</label>
+                        <input id="email" name="email" type="email" placeholder="{{ __('placeholderEmail') }}" required>
+
+                        <label for="company">{{ __('labelCompany') }}</label>
+                        <input id="company" name="company" type="text" placeholder="{{ __('placeholderCompany') }}">
+
+                        <button class="submit-button" type="submit">
+                            <span>{{ __('submit') }}</span> <span aria-hidden="true">→</span>
+                        </button>
+                        <div class="message" id="message"></div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>{{ __('footerCopy') }}</span>
+            <a href="mailto:contact@spacelogic.com">{{ __('footerContact') }}</a>
+        </footer>
     </div>
 
     <script>
-        // Handle form submission
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('subscriptionForm');
             const messageDiv = document.getElementById('message');
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const email = form.email.value;
-                
+                const formData = new FormData(form);
+                const payload = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    company: formData.get('company')
+                };
+
                 try {
                     const response = await fetch('/subscribe', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Accept': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                         },
-                        body: JSON.stringify({ email })
+                        body: JSON.stringify(payload)
                     });
 
-                    const data = await response.json();
-                    
-                    if (response.ok) {
-                        messageDiv.textContent = data.message;
+                    const responseText = await response.text();
+                    let data = null;
+                    if (responseText) {
+                        try {
+                            data = JSON.parse(responseText);
+                        } catch (error) {
+                            data = null;
+                        }
+                    }
+
+                    if (response.ok && data) {
+                        messageDiv.textContent = data.message || 'Merci de vous être abonné(e)!';
                         messageDiv.className = 'message success';
                         form.reset();
                     } else {
-                        throw new Error(data.message || 'Quelque chose s’est mal passé');
+                        const fieldErrors = data && data.errors
+                            ? Object.values(data.errors).flat().join(' ')
+                            : null;
+                        throw new Error(fieldErrors || (data && data.message) || 'Quelque chose s’est mal passé');
                     }
                 } catch (error) {
                     messageDiv.textContent = error.message;

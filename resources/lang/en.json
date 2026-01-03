@@ -1,0 +1,22 @@
+{
+    "cta": "Sign up",
+    "badge": "Launch planned for 2026",
+    "heroTitle": "A clear space to build better",
+    "heroSubtitle": "SpaceLogic centralizes the management of your architectural projects in an intuitive, collaborative environment.",
+    "featuresTitle": "Everything you need to manage your projects",
+    "feature1": "Centralized and customized management of all your architectural projects",
+    "feature2": "Real-time collaboration with your team and partners",
+    "feature3": "Precise tracking of deliverables and milestones",
+    "feature4": "Integrated library of standards and resources",
+    "formTitle": "Ready to transform how you manage your projects?",
+    "formSubtitle": "Sign up to be notified about the 2026 launch",
+    "labelName": "Full name",
+    "labelEmail": "Email address",
+    "labelCompany": "Company (optional)",
+    "placeholderName": "Your name",
+    "placeholderEmail": "you@email.com",
+    "placeholderCompany": "Company name",
+    "submit": "Get started",
+    "footerCopy": "© 2024 SpaceLogic. All rights reserved.",
+    "footerContact": "Contact us"
+}

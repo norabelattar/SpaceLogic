@@ -10,11 +10,15 @@ class SubscriberController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:subscribers,email'
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:subscribers,email',
+            'company' => 'nullable|string|max:255'
         ]);
 
         Subscriber::create([
-            'email' => $request->email
+            'name' => $request->name,
+            'email' => $request->email,
+            'company' => $request->company
         ]);
 
         return response()->json([
