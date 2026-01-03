@@ -139,6 +139,7 @@
             font-size: 1.1rem;
             color: var(--muted);
             line-height: 1.6;
+            text-wrap: balance;
         }
 
         .mockup {
@@ -372,7 +373,8 @@
 
         .features-card {
             width: min(890px, 100%);
-            background: #e6eeffff;
+            background: rgb(255, 255, 255);
+            box-shadow: var(--shadow);
             border-radius: 28px;
             padding: 3.25rem;
             border: 1px solid var(--line);
@@ -411,7 +413,6 @@
         }
 
         .signup h2 {
-            font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(1.8rem, 3vw, 2.4rem);
             margin-bottom: 0.5rem;
         }

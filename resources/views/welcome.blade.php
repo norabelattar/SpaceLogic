@@ -46,7 +46,7 @@
             <section class="hero">
                 <div class="badge">{{ __('badge') }}</div>
                 <h1>{{ __('heroTitle') }}</h1>
-                <p>{{ __('heroSubtitle') }}</p>
+                <p class="text-balance">{{ __('heroSubtitle') }}</p>
 
                 <div class="mockup" aria-hidden="true">
                     <div class="mockup-header">
