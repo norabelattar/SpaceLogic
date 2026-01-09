@@ -140,33 +140,73 @@
             </section>
 
             <section class="features">
-                <div class="features-card">
-                    <h2>{{ __('featuresTitle') }}</h2>
-                    <div class="features-list">
-                        <div class="features-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>{{ __('feature1') }}</span>
-                        </div>
-                        <div class="features-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>{{ __('feature2') }}</span>
-                        </div>
-                        <div class="features-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>{{ __('feature3') }}</span>
-                        </div>
-                        <div class="features-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>{{ __('feature4') }}</span>
-                        </div>
+                <div class="features-heading">
+                    <h2>La programmation, enfin outillée</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="features-card">
+                        <h3>Tout ce qu’il faut pour structurer des programmes fonctionnels et techniques clairs</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Structuration guidée des PFT selon une démarche professionnelle</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Organisation claire des unités fonctionnelles, espaces et locaux</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Centralisation des exigences fonctionnelles et techniques</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Livrables cohérents, lisibles et défendables</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="features-card">
+                        <h3>Maîtrisez vos superficies dès le départ</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Tableaux de superficies dynamiques et traçables</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Gestion des facteurs de conversion F1, F2 et F3</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Cohérence automatique entre unités, locaux et totaux</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Suivi des écarts entre programme, scénario et projet</span>
+                            </li>
+                            <li>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M20 6L9 17L4 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Une seule source de vérité pour toute l’équipe</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
