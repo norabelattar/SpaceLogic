@@ -1,5 +1,6 @@
 {
     "cta": "S'inscrire",
+    "logoTagline": "Organisez chaque local. Documentez chaque détail.",
     "badge": "Lancement prévu en 2026",
     "heroTitle": "Un espace clair pour bâtir mieux",
     "heroSubtitle": "SpaceLogic centralise la gestion de vos projets architecturaux dans un environnement intuitif et collaboratif.",
@@ -29,6 +30,6 @@
     "placeholderEmail": "votre@email.com",
     "placeholderCompany": "Nom de votre entreprise",
     "submit": "Commencer maintenant",
-    "footerCopy": "© 2024 SpaceLogic. Tous droits réservés.",
+    "footerCopy": "© 2026 RoomStack. Tous droits réservés.",
     "footerContact": "Contactez-nous"
 }

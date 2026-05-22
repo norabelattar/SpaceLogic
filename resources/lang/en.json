@@ -1,5 +1,6 @@
 {
     "cta": "Sign up",
+    "logoTagline": "Organize every room. Document every detail.",
     "badge": "Launch planned for 2026",
     "heroTitle": "A clear space to build better",
     "heroSubtitle": "SpaceLogic centralizes the management of your architectural projects in an intuitive, collaborative environment.",
@@ -29,6 +30,6 @@
     "placeholderEmail": "you@email.com",
     "placeholderCompany": "Company name",
     "submit": "Get started",
-    "footerCopy": "© 2024 SpaceLogic. All rights reserved.",
+    "footerCopy": "© 2026 RoomStack. All rights reserved.",
     "footerContact": "Contact us"
 }

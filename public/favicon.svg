@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="6" fill="white"/>
-    <g transform="translate(6 7)">
-
-        <path d="M10 0L20 6L10 12L0 6L10 0Z" fill="#6B7280"/>
-        <path d="M0 6L10 12V24L0 18V6Z" fill="#374151"/>
-        <path d="M20 6L10 12V24L20 18V6Z" fill="#000000"/>
-    </g>
+<svg width="32" height="32" viewBox="0 0 104 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="104" height="116" rx="18" fill="white"/>
+    <rect x="21" y="2" width="68" height="36" rx="7" transform="rotate(30 21 2)" fill="#E9DCC6" fill-opacity="0.78"/>
+    <rect x="21" y="30" width="68" height="36" rx="7" transform="rotate(30 21 30)" fill="#2F4E46" fill-opacity="0.76"/>
+    <rect x="21" y="58" width="68" height="36" rx="7" transform="rotate(30 21 58)" fill="#C56A4D" fill-opacity="0.9"/>
 </svg>
